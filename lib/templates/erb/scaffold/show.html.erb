@@ -10,24 +10,19 @@
           Created <%%= time_ago_in_words(@<%= singular_table_name %>.created_at) %> ago
         </h3>
 
-
-        <dl class="row dl-horizontal m-t-1">
+        <dl class="m-t-1">
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
-          <dt class="col-sm-3">
-            <%= attribute.human_name %>
-          </dt>
-          <dd class="col-md-9">
-            <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
-          </dd>
+          <dt><%= attribute.human_name %></dt>
+          <dd><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
 
 <% end -%>
         </dl>
 
-        <%%= link_to icon('chevron-left'), <%= index_helper %>_path, class: "btn btn-block btn-secondary" %>
+        <%%= link_to icon("chevron-left"), <%= index_helper %>_path, class: "btn btn-block btn-secondary" %>
 
-        <%%= link_to icon('edit'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-block btn-secondary" %>
+        <%%= link_to icon("edit"), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-block btn-secondary" %>
 
-        <%%= link_to icon('trash-o'), @<%= singular_table_name %>, method: :delete, data: { confirm: "Do you really want to delete this <%= singular_table_name %>?" }, class: "btn btn-block btn-secondary" %>
+        <%%= link_to icon("trash-o"), @<%= singular_table_name %>, method: :delete, data: { confirm: "Do you really want to delete this <%= singular_table_name %>?" }, class: "btn btn-block btn-secondary" %>
       </div>
 
       <div class="card-footer text-muted">
