@@ -1,0 +1,90 @@
+<div class="row m-t-3">
+  <div class="col-xs-12">
+    <h1 class="display-4">
+      <%= plural_table_name.titleize %>
+      <%%= link_to icon("plus"), new_<%= singular_table_name %>_path, class: "btn btn-lg btn-secondary" %>
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="card-columns">
+      <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+        <div class="card">
+          <h2 class="card-header h4">
+            <%= singular_table_name.titleize %> #<%%= <%= singular_table_name %>.id %>
+          </h2>
+
+          <div class="card-block">
+            <h3 class="card-subtitle h6 text-muted">
+              Created <%%= time_ago_in_words(<%= singular_table_name %>.created_at) %> ago
+            </h3>
+
+            <dl class="m-t-1">
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+              <dt><%= attribute.human_name %></dt>
+              <dd><%%= <%= singular_table_name %>.<%= attribute.name %> %></dd>
+
+<% end -%>
+            </dl>
+
+            <%%= link_to icon("search-plus"), <%= singular_table_name %>, class: "btn btn-block btn-secondary" %>
+
+            <%%= link_to icon("edit"), edit_<%= singular_table_name %>_url(<%= singular_table_name %>), class: "btn btn-block btn-secondary" %>
+
+            <%%= link_to icon("trash-o"), <%= singular_table_name %>, method: :delete, data: { confirm: "Do you really want to delete this <%= singular_table_name %>?" }, class: "btn btn-block btn-secondary" %>
+          </div>
+
+          <div class="card-footer text-muted">
+            Last updated <%%= time_ago_in_words(<%= singular_table_name %>.updated_at) %> ago
+          </div>
+        </div>
+      <%% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table table-striped table-responsive">
+      <thead>
+        <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <th>
+            <%= attribute.human_name %>
+          </th>
+
+<% end -%>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+          <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+            <td>
+              <%%= <%= singular_table_name %>.<%= attribute.name %> %>
+            </td>
+
+<% end -%>
+            <td>
+              <div class="btn-group-vertical">
+                <%%= link_to icon("search-plus"), <%= singular_table_name %>, class: "btn btn-secondary" %>
+
+                <%%= link_to icon("edit"), edit_<%= singular_table_name %>_url(<%= singular_table_name %>), class: "btn btn-secondary" %>
+
+                <%%= link_to icon("trash-o"), <%= singular_table_name %>, method: :delete, data: { confirm: "Do you really want to delete this <%= singular_table_name %>?" }, class: "btn btn-secondary" %>
+              </div>
+            </td>
+          </tr>
+        <%% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

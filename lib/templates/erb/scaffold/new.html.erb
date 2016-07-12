@@ -1,0 +1,13 @@
+<div class="row m-t-3">
+  <div class="col-lg-offset-2 col-lg-8">
+    <div class="card">
+      <h2 class="card-header">
+        New <%= singular_table_name.titleize %>
+      </h2>
+
+      <div class="card-block">
+        <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
+      </div>
+    </div>
+  </div>
+</div>
