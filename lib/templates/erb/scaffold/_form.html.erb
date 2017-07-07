@@ -7,7 +7,7 @@
 
       <%% if <%= singular_table_name %>.errors.include?(:<%= attribute.name %>) %>
         <%% <%= singular_table_name %>.errors.full_messages_for(:<%= attribute.name %>).each do |message| %>
-          <p class="text-danger m-t-1 m-b-0">
+          <p class="text-danger mb-1 m-b-0">
             <%%= message %>
           </p>
         <%% end %>
