@@ -3,7 +3,7 @@
     <h1 class="display-4">
       <%= plural_table_name.titlecase %>
 
-      <%%= link_to fa_icon("plus"), new_<%= singular_table_name %>_path, class: "btn btn-lg btn-secondary" %>
+      <%%= link_to fa_icon("plus"), new_<%= singular_table_name %>_path, class: "btn btn-lg btn-outline-dark" %>
     </h1>
   </div>
 </div>
@@ -48,25 +48,15 @@
 </div>
 <%% end %>
 
-<!-- Card columns example -->
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="card-columns">
-      <%%= render collection: @<%= plural_table_name %>, partial: "card", as: :<%= singular_table_name %> %>
-    </div>
-  </div>
-</div>
-
 <!-- List group example -->
 
-<div class="row mb-3">
-  <div class="offset-md-2 col-md-8">
+<div class="row justify-content-center mb-3">
+  <div class="col-md-8">
     <div class="card">
       <h1 class="card-header h4 d-flex align-items-center justify-content-between">
         <%= plural_table_name.titlecase %>
 
-        <%%= link_to fa_icon("plus fw"), new_<%= singular_table_name %>_path, class: "btn btn-sm btn-secondary" %>
+        <%%= link_to fa_icon("plus fw"), new_<%= singular_table_name %>_path, class: "btn btn-sm btn-outline-dark" %>
       </h1>
 
       <div class="list-group list-group-flush">
